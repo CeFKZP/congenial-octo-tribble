@@ -1,0 +1,42 @@
+data:
+  in_memory: 1
+  num_workers: 32
+dist:
+  world_size: 8
+logging:
+  log_level: 2
+  folder: saved/
+lr:
+  lr: 1.7
+  lr_schedule_type: cyclic
+model:
+  arch: ResNet50Blocks
+  num_classes: 1000
+  gradient_depth: 1
+  num_splits: 3
+  no_detach: 0
+  denoise: 0.01
+local_loss:
+  alpha: .43
+  beta: 0.7
+  gamma: .25
+  local_pred_loss: .55
+  denoise_loss: 1.0
+resolution:
+  end_ramp: 27
+  max_res: 192
+  min_res: 160
+  start_ramp: 23
+training:
+  batch_size: 128
+  bn_wd: 0
+  distributed: 1
+  epochs: 32
+  label_smoothing: 0.1
+  momentum: 0.9
+  optimizer: sgd
+  weight_decay: 0.0001
+  use_blurpool: 1
+validation:
+  lr_tta: false
+  resolution: 256
